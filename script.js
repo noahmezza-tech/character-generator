@@ -1,17 +1,6 @@
 const result = document.getElementById("result");
 const button = document.getElementById("generateBtn");
 
-const timePeriods = [
-  "Stone Age",
-  "Medieval",
-  "Victorian Era",
-  "World War I",
-  "World War II",
-  "Modern Day",
-  "Post-Apocalyptic",
-  "Cyberpunk Future"
-];
-
 const traits = [
   "Brave",
   "Cowardly",
@@ -24,26 +13,119 @@ const traits = [
   "Ambitious",
   "Lazy",
   "Charismatic",
-  "Paranoid"
+  "Paranoid",
+  "Confident",
+  "Anxious",
+  "Impulsive",
+  "Patient",
+  "Stubborn",
+  "Curious",
+  "Suspicious",
+  "Playful",
+  "Serious",
+  "Optimistic",
+  "Pessimistic",
+  "Creative",
+  "Observant",
+  "Strategic",
+  "Naive",
+  "Sarcastic",
+  "Protective",
+  "Vengeful",
+  "Compassionate",
+  "Greedy",
+  "Fearless",
+  "Cautious",
+  "Meticulous",
+  "Carefree",
+  "Hot-Tempered",
+  "Calm",
+  "Rebellious",
+  "Obedient",
+  "Logical",
+  "Emotional",
+  "Secretive",
+  "Talkative",
+  "Quiet",
+  "Leader",
+  "Follower",
+  "Domineering",
+  "Submissive",
+  "Honorable",
+  "Deceitful",
+  "Resourceful",
+  "Wasteful",
+  "Inventive",
+  "Traditional",
+  "Adventurous",
+  "Homebound",
+  "Polite",
+  "Rude",
+  "Hopeful",
+  "Hopeless",
+  "Persistent",
+  "Forgetful",
+  "Disciplined",
+  "Chaotic",
+  "Visionary",
+  "Short-Sighted",
+  "Tactful",
+  "Blunt",
+  "Altruistic",
+  "Self-Centered",
+  "Perceptive",
+  "Clueless",
+  "Zealous",
+  "Apathetic",
+  "Respectful",
+  "Disrespectful",
+  "Tenacious",
+  "Unmotivated",
+  "Wise",
+  "Foolish",
+  "Calculating",
+  "Careless",
+  "Fierce",
+  "Timid",
+  "Devoted",
+  "Fickle",
+  "Bold",
+  "Meek",
+  "Ethical",
+  "Corrupt",
+  "Innovative",
+  "Rigid",
+  "Energetic",
+  "Sluggish",
+  "Reliable",
+  "Unreliable",
+  "Stoic",
+  "Dramatic",
+  "Focused",
+  "Scatterbrained"
 ];
 
 button.addEventListener("click", () => {
-  const time = timePeriods[Math.floor(Math.random() * timePeriods.length)];
 
-  let trait1 = traits[Math.floor(Math.random() * traits.length)];
-  let trait2 = traits[Math.floor(Math.random() * traits.length)];
-  let trait3 = traits[Math.floor(Math.random() * traits.length)];
+  // ✅ Random year between -10,000 and 2025
+  const time = Math.floor(Math.random() * (2025 - (-10000) + 1)) + (-10000);
 
-  while (trait2 === trait1) {
-    trait2 = traits[Math.floor(Math.random() * traits.length)];
+  let selectedTraits = [];
+
+  while (selectedTraits.length < 3) {
+    let randomTrait = traits[Math.floor(Math.random() * traits.length)];
+
+    if (!selectedTraits.includes(randomTrait)) {
+      selectedTraits.push(randomTrait);
+    }
   }
 
-  while (trait3 === trait1 || trait3 === trait2) {
-    trait3 = traits[Math.floor(Math.random() * traits.length)];
-  }
+  // ✅ Alphabetical order
+  selectedTraits.sort();
 
+  // ✅ Display
   result.innerHTML = `
-    <strong>Time Period:</strong> ${time}<br>
-    <strong>Traits:</strong> ${trait1}, ${trait2}, ${trait3}
+    <strong>Time Period (Year):</strong> ${time}<br>
+    <strong>Traits:</strong> ${selectedTraits[0]}, ${selectedTraits[1]}, ${selectedTraits[2]}
   `;
 });
